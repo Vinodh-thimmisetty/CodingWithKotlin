@@ -1,4 +1,4 @@
-package arrays
+package hackerrank
 
 import java.util.Collections.swap
 
@@ -22,6 +22,7 @@ fun tempArrayApproach(input: IntArray, noOfRotations: Int) {
     println(tempArray.contentToString())
 }
 
+// Takes more time for large input :: Avoid it
 fun withoutTempArray(input: MutableList<Int>, noOfRotations: Int): Array<Int> {
     (noOfRotations until input.size).forEach { eit ->
         (0 until noOfRotations).forEach { iit ->
@@ -32,9 +33,42 @@ fun withoutTempArray(input: MutableList<Int>, noOfRotations: Int): Array<Int> {
     return input.toTypedArray()
 }
 
+
 fun reverseArrayApproach(input: MutableList<Int>, noOfRotations: Int) {
-    (0 until input.size / 2).forEach { swap(input, it, input.size - 1 - it) }
+    reverseSubList(input, 0, input.size - 1)
     println(input.toString())
+    reverseSubList(input, 0, noOfRotations - 1)
+    println(input.toString())
+    reverseSubList(input, noOfRotations, input.size - 1)
+    println(input.toString())
+}
+
+fun reverseSubList(input: MutableList<Int>, start: Int, end: Int) =
+    (0..(end - start).div(2)).forEach { swap(input, start + it, end - it) }
+
+
+class Rotate(var nums: IntArray, var start: Int, var end: Int) {
+    fun reverse(): IntArray {
+        while (start < end) {
+            val temp = nums[end]
+            nums[end--] = nums[start]
+            nums[start++] = temp
+        }
+        return nums
+    }
+}
+
+// Leetcode stub
+class Solution {
+    fun rotate(nums: IntArray, k: Int) {
+        Rotate(
+            Rotate(
+                Rotate(nums, 0, nums.size - 1)
+                    .reverse(), 0, k.rem(nums.size) - 1
+            ).reverse(), k.rem(nums.size), nums.size - 1
+        ).reverse()
+    }
+
 }
 
 

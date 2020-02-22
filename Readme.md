@@ -1,6 +1,6 @@
 > To learn a new language
 
-1. Variables [primitives, String, Number, Date, Regex]
+1. Variables [primitives, String, Number, Date, Regex, Bitwise]
 2. Control Structure [if, for, while, switch]
 3. OOPS [scopes, class, interface, Generics, Inheritance, Annotations, Reflection]
 4. Functions [return types, varargs, default args, named args]
@@ -20,6 +20,7 @@
 1. Arrays
 i) Reversing
 ii) swapping
+iii) Dividing array size
 2. LinkedLists
 3. Stacks
 4. Queues

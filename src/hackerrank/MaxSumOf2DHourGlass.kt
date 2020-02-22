@@ -1,4 +1,4 @@
-package arrays
+package hackerrank
 
 import kotlin.math.max
 
