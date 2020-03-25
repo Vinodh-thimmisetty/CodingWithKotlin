@@ -21,13 +21,6 @@ fun main() {
     println()
 }
 
-data class BNode(
-    val data: Int, var left: BNode? = null,
-    var right: BNode? = null
-)
-
-var rootNode: BNode? = null
-
 fun preOrderTraversalRecursive(node: BNode?) {
     node?.run {
         print(" $data -->")
@@ -107,29 +100,6 @@ fun levelOrderTraversal(node: BNode?) {
             treeQueue.also { queue ->
                 left?.let { node -> queue.add(node) }
                 right?.let { node -> queue.add(node) }
-            }
-        }
-    }
-}
-
-fun sampleTree() {
-    rootNode = BNode(10)
-    rootNode?.run {
-        left = BNode(20)
-        right = BNode(30)
-        left?.run {
-            left = BNode(40)
-            right = BNode(50)
-            left?.run {
-                left = BNode(80)
-                right = BNode(90)
-            }
-        }
-        right?.run {
-            left = BNode(60)
-            right = BNode(70)
-            left?.run {
-                left = BNode(100)
             }
         }
     }
