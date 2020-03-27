@@ -55,6 +55,8 @@ class QuickFind(private var friends: Array<Int>) : DynamicConnectivity {
     }
 
     override fun friendsInfo() = println(friends.contentToString())
+
+    fun findLargestInGroup(input: Int) = friends.filterIndexed { index, _ -> input == index }.max()
 }
 
 class QuickUnion(private var friends: Array<Int>) : DynamicConnectivity {
